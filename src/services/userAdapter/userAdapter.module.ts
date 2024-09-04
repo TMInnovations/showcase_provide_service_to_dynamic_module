@@ -1,9 +1,9 @@
 import { Module } from '@nestjs/common';
-import { UserAdapterService } from './userAdapter.service';
+import { UserAdapterService as UserService } from './userAdapter.service';
 
 @Module({
   imports: [],
-  providers: [UserAdapterService],
-  exports: [UserAdapterService],
+  providers: [UserService],
+  exports: [UserService],
 })
-export class UserAdapterModule {}
+export class UserModule {}

@@ -1,6 +1,6 @@
 import { Module } from '@nestjs/common';
 import { AuthenticationMiddleware } from './authentication/authentication.middleware.service';
-import { ConfigurableModuleClass } from './config.module-definition';
+import { ConfigurableModuleClass } from './types';
 
 @Module({
   imports: [],

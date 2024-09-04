@@ -1,14 +1,10 @@
-import {
-  Inject,
-  Injectable,
-  NestMiddleware
-} from '@nestjs/common';
+import { Inject, Injectable, NestMiddleware } from '@nestjs/common';
 import { NextFunction } from 'express';
 import {
   AuthModuleOptions,
+  ModifiedRequest,
   MODULE_OPTIONS_TOKEN,
-} from '../config.module-definition';
-import { ModifiedRequest } from '../types';
+} from '../types';
 
 @Injectable()
 export class AuthenticationMiddleware implements NestMiddleware {
@@ -17,10 +13,10 @@ export class AuthenticationMiddleware implements NestMiddleware {
   ) {}
 
   async use(req: ModifiedRequest, res: Response, next: NextFunction) {
-    const user = await this.options.userService.findOrCreate(req.headers['x-user-id']);
+    const user = await this.options.getUser(req.headers['x-user-id']);
     req.user = {
       id: user.id,
-      role: user.role
+      role: user.role,
     };
     next();
   }
