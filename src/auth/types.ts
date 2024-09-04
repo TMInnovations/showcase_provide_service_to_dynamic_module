@@ -29,14 +29,10 @@ export interface User {
   role: Role;
 }
 
-export interface UserService {
-  findOrCreate: (id: string) => Promise<User>;
-}
-
-export type getUser = (id: string) => Promise<User>;
+export type GetUserFunctionType = (id: string) => Promise<User>;
 
 export interface AuthModuleOptions {
-  getUser: getUser;
+  getUser: GetUserFunctionType;
 }
 
 export const { ConfigurableModuleClass, MODULE_OPTIONS_TOKEN } =
