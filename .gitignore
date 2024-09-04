@@ -1,0 +1,10 @@
+node_modules
+dist
+.history
+logs
+dist-ssr
+.DS_Store
+/data
+
+config.json
+
