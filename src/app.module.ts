@@ -25,7 +25,11 @@ export class AuthModuleOptionsFactory {
   providers: [],
 })
 export class AppModule {
+  constructor(private authMiddleware: AuthenticationMiddleware) {}
+
   configure(consumer: MiddlewareConsumer): void {
-    const authModule = consumer.apply(AuthenticationMiddleware).forRoutes('*');
+    const authModule = consumer
+      .apply(this.authMiddleware.use.bind(this.authMiddleware))
+      .forRoutes('*');
   }
 }
